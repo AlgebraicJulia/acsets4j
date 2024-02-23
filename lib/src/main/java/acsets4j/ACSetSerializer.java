@@ -26,6 +26,7 @@ public abstract class ACSetSerializer<T extends ACSet> extends StdSerializer<T> 
             for (int i = 0; i < n; i++) {
                 Part p = new Part(object.name(), i);
                 jgen.writeStartObject();
+                jgen.writeNumberField("_id", i+1);
                 for (String f: schema.subpartsByDom(object.name())) {
                     if (schema.isHom(f)) {
                         jgen.writeNumberField(f, ((Part) val.subpartUnchecked(p, f)).index() + 1);
