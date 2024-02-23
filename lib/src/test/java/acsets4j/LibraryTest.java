@@ -4,12 +4,17 @@
 package acsets4j;
 
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
+    Graph g = new Graph();
+
     @Test
     void graphOps() throws Exception {
-        Graph g = new Graph();
         Part v1 = g.addPart("V");
         Part v2 = g.addPart("V");
         Part e = g.addPart("E");
@@ -17,5 +22,13 @@ class LibraryTest {
         g.setSubpart(e, "tgt", v2);
         assertEquals(g.subpart(e, "src"), v1);
         assertEquals(g.subpart(e, "tgt"), v2);
+    }
+
+    @Test
+    void graphSerialization() throws JsonProcessingException {
+        ObjectMapper om = new ObjectMapper();
+        String s = om.writeValueAsString(g);
+        Graph h = om.readValue(s, Graph.class);
+        assertEquals(g, h);
     }
 }

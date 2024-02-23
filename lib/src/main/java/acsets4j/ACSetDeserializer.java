@@ -22,7 +22,7 @@ public abstract class ACSetDeserializer<T extends ACSet> extends StdDeserializer
 
     public void deserializeInto(T acs, JsonParser jp, DeserializationContext ctxt) 
       throws IOException, JsonProcessingException {
-        Schema schema = T.schema;
+        Schema schema = acs.schema();
         JsonNode node = jp.getCodec().readTree(jp);
         ObjectMapper om = new ObjectMapper();
         for (Ob object : schema.objects) {

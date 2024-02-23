@@ -65,4 +65,29 @@ public abstract class ACSet {
     public void setSubpartUnchecked(Part i, String f, Object x) {
         columns.get(f).set(i.index(), x);
     }
+
+    public boolean equals(Object otherObj) {
+        if (!(this.getClass().isInstance(otherObj))) {
+            return false;
+        }
+
+        ACSet other = (ACSet) otherObj;
+
+        for (Ob ob : schema().objects) {
+            int n = this.npartsUnchecked(ob.name());
+            if (!(n == other.npartsUnchecked(ob.name()))) {
+                return false;
+            }
+            for (String f : schema().subpartsByDom(ob.name())) {
+                for (int i = 0; i < n; i++) {
+                    Part p = new Part(ob.name(), i);
+                    if (!(this.subpartUnchecked(p, f).equals(other.subpartUnchecked(p, f)))) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    }
 }

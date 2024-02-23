@@ -18,7 +18,8 @@ public abstract class ACSetSerializer<T extends ACSet> extends StdSerializer<T> 
 
     @Override
     public void serialize(T val, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
-        Schema schema = T.schema; 
+        Schema schema = val.schema(); 
+        jgen.writeStartObject();
         for (Ob object : schema.objects) {
             jgen.writeArrayFieldStart(object.name());
             int n = val.npartsUnchecked(object.name());
@@ -36,5 +37,6 @@ public abstract class ACSetSerializer<T extends ACSet> extends StdSerializer<T> 
             }
             jgen.writeEndArray();
         }
+        jgen.writeEndObject();
     }
 }
