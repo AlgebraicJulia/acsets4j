@@ -22,6 +22,10 @@ repositories {
     mavenCentral()
 }
 
+group = 'org.algebraicjulia'
+archivesBaseName = 'acsets4j'
+version = 0.1
+
 dependencies {
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
