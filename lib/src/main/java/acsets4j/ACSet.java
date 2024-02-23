@@ -9,7 +9,7 @@ public abstract class ACSet {
 
     public static Schema schema;
 
-    abstract Schema schema();
+    public abstract Schema schema();
     
     public ACSet() {
         parts = new HashMap<>();

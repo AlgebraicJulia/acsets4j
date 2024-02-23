@@ -1,4 +1,6 @@
-package acsets4j;
+package acsets4j.graphs;
+
+import acsets4j.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;

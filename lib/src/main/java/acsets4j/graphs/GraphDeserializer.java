@@ -1,6 +1,8 @@
-package acsets4j;
+package acsets4j.graphs;
 
 import java.io.IOException;
+
+import acsets4j.*;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

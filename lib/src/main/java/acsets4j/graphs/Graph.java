@@ -1,4 +1,6 @@
-package acsets4j;
+package acsets4j.graphs;
+
+import acsets4j.*;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -8,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class Graph extends ACSet {
     public static Schema schema = SchGraph.schema;
 
+    @Override
     public Schema schema() {
         return schema;
     }
